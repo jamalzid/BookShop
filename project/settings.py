@@ -33,12 +33,26 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Books',
+    'bootstrapform',
+    'accounts',
+    'django_countries',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # # ... other ways to sign in:
+    # 'allauth.socialaccount.providers.amazon',
+    # 'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.google'
+    
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,3 +140,5 @@ MEDIA_URL = '/media/'
 MEDIAFILES_DIRS = [
         os.path.join(BASE_DIR, "media"),
 ]
+
+LOGIN_REDIRECT_URL='Books:index'
