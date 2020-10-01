@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-    <title>Booke Colorlib Template</title>
+    <title>Book Store</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto&display=swap" rel="stylesheet">
@@ -88,7 +88,25 @@
                                         <li><a href="#features-section" class="nav-link">Books</a></li>
                                         <li><a href="#about-section" class="nav-link">Authors</a></li>
                                         <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                                        {% if user.is_authenticated %}
                                         <li><a href="{% url 'Books:add_book' %}" class="nav-link">Add New Book</a></li>
+
+                                        <div class="btn-group">
+                                            <a type="button" class=" dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#333333;">
+                                                {{request.user.username}}
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Profile</a>
+                                                <a class="dropdown-item" href="#">My Books</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a href="{% url 'account_logout' %}" class="nav-link">Log Out</a>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        <li><a href="{% url 'account_login' %}" class="nav-link">Login</a></li>
+
+                                        {% endif %}
 
                                     </ul>
                                 </div>

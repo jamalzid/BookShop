@@ -1,21 +1,17 @@
 {% extends "base.html" %} {% block content %} {% load static %}
-<div class="site-section" id="home-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mb-5">
-                <h1 class="text-white serif text-uppercase mb-4">Meet the Best Book of the Week</h1>
-                <p class="text-white mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis sint alias, doloribus assumenda totam porro ex impedit, recusandae voluptatibus sed.</p>
-                <p><a href="#" class="btn btn-white px-4 py-3">Buy This Book On Amazon</a></p>
-            </div>
-        </div>
 
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <img src="{% static 'images/book_1.png'%}" alt="Image" class="img-fluid">
-            </div>
-        </div>
+<div class="author  d-lg-flex mt-50" id="about-section">
+    <div class="text">
+        <h1 class="text-white serif text-uppercase mb-4">Meet the Best Book of the Week</h1>
+        <p class="text-white mb-5">{{best_book.book.title}}</p>
+        <p><a href="#" class="btn btn-white px-4 py-3 " style="margin-left: 110px;">Buy This Book Now</a></p>
+    </div>
+    <div class="mt-5">
+        <img src="{{best_book.book.image.url}}" alt="Image" class="img-fluid" style="height: 300px;margin-left:90px;">
+
     </div>
 </div>
+
 
 <div class="site-section bg-light" id="features-section">
     <div class="container">
@@ -36,6 +32,10 @@
                         <a href="{% url 'Books:books_detail' book.slug %} ">
                             <h3 style="margin-top: 19px;">{{book.title}}</h3>
                         </a>
+                        <hr>
+                        <p class="card-text">Author: <a href="{{ book.author }}">{{ book.author }}</a>
+                        </p>
+
 
                     </div>
 

@@ -15,7 +15,6 @@ class Author(models.Model):
     def __str__(self):
         return self.full_name
 
-    
 
 class Book(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -34,3 +33,9 @@ class Book(models.Model):
     def __str__(self):
             return self.title
     
+
+class Best_Book(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.book.title
