@@ -3,7 +3,7 @@
 <div class="site-section bg-light" id="features-section">
     <div class="container">
 
-        <form class="" method="POST" action="{% url 'Books:index' %}">
+        <form class="form" method="POST" enctype="multipart/form-data" action=".">
             {% csrf_token %} {{ form|bootstrap }}
             <button class="primaryAction" type="submit">Add Book</button>
         </form>

@@ -1,59 +1,49 @@
 {% extends "base.html" %} {% block content %} {% load static %}
-<div class="site-section" id="home-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mb-5">
-                <h1 class="text-white serif text-uppercase mb-4">Meet the Best Book of the Week</h1>
-                <p class="text-white mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis sint alias, doloribus assumenda totam porro ex impedit, recusandae voluptatibus sed.</p>
-                <p><a href="#" class="btn btn-white px-4 py-3">Buy This Book On Amazon</a></p>
-            </div>
-        </div>
 
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <img src="{% static 'images/book_1.png'%}" alt="Image" class="img-fluid">
-            </div>
-        </div>
+<div class="author  d-lg-flex mt-50" id="about-section">
+    <div class="text">
+        <h1 class="text-white serif text-uppercase mb-4">Meet the Best Book of the Week</h1>
+        <p class="text-white mb-5">{{best_book.book.title}}</p>
+        <p><a href="#" class="btn btn-white px-4 py-3 " style="margin-left: 110px;">Buy This Book Now</a></p>
+    </div>
+    <div class="mt-5">
+        <img src="{{best_book.book.image.url}}" alt="Image" class="img-fluid" style="height: 300px;margin-left:90px;">
+
     </div>
 </div>
 
-<div class="site-section bg-light" id="features-section">
+
+<div class="site-section bg-light mx-auto px-5" id="features-section">
     <div class="container">
         <div class="row mb-5">
-            <h4>Books:</h4>
-            <div class="row">
-                {% for book in books %}
-                <div class="col-6">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src="{{ book.image.url }}" class="card-img" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ book.title }}</h5>
+            <div class="col-md-7">
+                <h2 class="heading">just for learn </h2>
+            </div>
+        </div>
 
-                                    <p class="card-text">Author: <a href="{{ book.author }}">{{ book.author }}</a>
-                                    </p>
-                                    <p class="card-text">
-                                        <small class="text-muted">
-                                            Categories: {{ book.category }}
-                                        </small>
-                                    </p>
-                                </div>
-                            </div>
+
+
+        <div class="row">
+            {% for book in books %}
+            <a href="{% url 'Books:books_detail' book.slug %} ">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service h-100">
+                        <div class="">
+                            <!-- <span class="icon-book"></span> -->
+                            <img class="cardBookImage" src="{{book.image.url}} " alt="" style=" height: 110px; width: 91px;margin-left: 141px;">
                         </div>
+                        <a href="{% url 'Books:books_detail' book.slug %} ">
+                            <h3 style="margin-top: 19px;">{{book.title}}</h3>
+                        </a>
+                        <hr>
+                        <p class="card-text">Author: <a href="{{ book.author }}">{{ book.author }}</a>
+                        </p>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
+            </a>
+            {% endfor %}
+            <hr>
 
-            <h4>Authors list</h4>
-            <ul>
-                {%for author in authors %}
-                <li><a href="{{ author.get_absolute_url }}">{{ author }}</a></li>
-                {% endfor %}
-            </ul>
             <!-- <div class="col-md-6 col-lg-4 mb-4">
                 <div class="service h-100">
                     <span class="wrap-icon">
@@ -108,29 +98,12 @@
             </div> -->
 
         </div>
+        <a href="{% url 'Books:books_list' %} " class="btn btn-success btn-lg btn-block "><span class="wrap-icon">
+                <i class="fa fa-book"></i> More Books</a>
     </div>
 </div>
 
 
-<div class="author  d-lg-flex" id="about-section">
-    <div class="bg-img" style="background-image: url('{% static 'images/author_1.jpg'%}');"></div>
-    <div class="text">
-        <h3>Hello It's Jane</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis qui voluptates illum harum minima accusantium praesentium eos aut ab. Voluptate nulla illum ullam maxime consequuntur labore qui delectus, omnis saepe.</p>
-        <p>Eos ratione repellat ea dignissimos iure ipsam sed dolore, excepturi id recusandae cumque sit, fugiat obcaecati necessitatibus nisi voluptate similique? Sed quae itaque nisi magnam amet aut maiores debitis temporibus.
-        </p>
-        <p>Iste repellendus libero cumque facilis sint quas quis temporibus quia veritatis reiciendis obcaecati, magni, dolorum aspernatur laborum, est, sequi rerum! Perspiciatis facilis commodi libero ipsa minima reiciendis rerum, facere quaerat.</p>
-
-        div.social_
-
-        <div class="mt-5">
-            <span class="d-block text-black mb-4">Jane Smith, <span class="text-muted">Book Author &amp;
-                    Publisher</span></span>
-            <img src="{% static 'images/signature.png'%}" alt="Image" class="img-fluid w-25">
-        </div>
-
-    </div>
-</div>
 
 
 

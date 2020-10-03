@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'django_filters',
+
     # # ... other ways to sign in:
     # 'allauth.socialaccount.providers.amazon',
     # 'allauth.socialaccount.providers.facebook',

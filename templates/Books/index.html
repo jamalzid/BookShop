@@ -17,9 +17,12 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-md-7">
-                <h2 class="heading">Our Books</h2>
+                <h2 class="heading">Some of Our Books</h2>
             </div>
         </div>
+
+
+
         <div class="row">
             {% for book in books %}
             <a href="{% url 'Books:books_detail' book.slug %} ">
@@ -35,13 +38,12 @@
                         <hr>
                         <p class="card-text">Author: <a href="{{ book.author }}">{{ book.author }}</a>
                         </p>
-
-
                     </div>
-
                 </div>
             </a>
             {% endfor %}
+            <hr>
+
             <!-- <div class="col-md-6 col-lg-4 mb-4">
                 <div class="service h-100">
                     <span class="wrap-icon">
@@ -96,6 +98,8 @@
             </div> -->
 
         </div>
+        <a href="{% url 'Books:books_list' %} " class="btn btn-success btn-lg btn-block "><span class="wrap-icon">
+                <i class="fa fa-book"></i> More Books</a>
     </div>
 </div>
 

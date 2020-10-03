@@ -1,9 +1,24 @@
 {% extends "base.html" %} {% load static %} {% load bootstrap %} {% block content %}
 <div style="background-color: aliceblue;">
+
+
     <div class="author  d-lg-flex mt-50" id="about-section">
+
+
         <div class="bg-img" style="background-image: url({{book.image.url}});"></div>
         <div class="text">
+
             <h3>{{book.title}} </h3>
+
+            {% if user.is_authenticated %} {% if request.user == book.user %}
+            <form method="POST" enctype="multipart/form-data" class="">
+                <a href="{% url 'Books:delete_book' book.slug %}" type="button" class="btn btn-outline-danger">Delete Book</a>
+                <a href="{% url 'Books:update_book' book.slug %} " type="button" class="btn btn-outline-success">Update Book</a>
+            </form>
+            {% endif %} {% endif %}
+
+
+            <hr>
             <p>{{book.description}}.</p>
             <hr>
 
@@ -16,7 +31,9 @@
         </div>
     </div>
 
+    <div class="">
 
+    </div>
     <div class="site-section py-5 bg-primary">
         <div class="container">
             <h3 class="text-white h4 mb-3 ml-3">Subscribe For The New Updates</h3>

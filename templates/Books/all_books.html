@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% load static %} {% load bootstrap %}{% block content %}
+
+
+<div class="site-section bg-light" id="features-section">
+    <div class="container mx-auto">
+        <div class="row mb-5">
+            <div class="col-md-7">
+                <h2 class="heading">Our Books</h2>
+            </div>
+        </div>
+
+
+        <form class=" centered form-inline mx-auto py-4" style="padding-left: 157px;">
+            <div class="form-row align-items-center " style="">
+                {{myfilter.form|bootstrap}}
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success mb-2">Submit</button>
+                </div>
+            </div>
+        </form>
+        <hr>
+
+
+        <div class="row">
+            {% for book in books %}
+            <a href="{% url 'Books:books_detail' book.slug %} ">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service h-100">
+                        <div class="">
+                            <!-- <span class="icon-book"></span> -->
+                            <img class="cardBookImage" src="{{book.image.url}} " alt="" style=" height: 110px; width: 91px;margin-left: 141px;">
+                        </div>
+                        <a href="{% url 'Books:books_detail' book.slug %} ">
+                            <h3 style="margin-top: 19px;">{{book.title}}</h3>
+                        </a>
+                        <hr>
+                        <p class="card-text">Author: <a href="{{ book.author }}">{{ book.author }}</a>
+                        </p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
