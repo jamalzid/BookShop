@@ -4,14 +4,18 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
+import debug_toolbar
+
 admin.site.site_header = 'Books Store Admin'
 admin.site.site_title = 'Books Store Admin'
 admin.site.index_title = 'Books Store Administration'
 
 urlpatterns = i18n_patterns(
+    
     path('accounts/', include('allauth.urls')),
 
     path('admin/', admin.site.urls),
+    path('__debug__/', include(debug_toolbar.urls)),
     path('', include('Books.urls', namespace='Books')),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

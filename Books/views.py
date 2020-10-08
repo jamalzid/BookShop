@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import *
+from .models import Book, Best_Book
 from .forms import *
 from .filters import BookFilter
 from django.http.response import HttpResponse
