@@ -24,7 +24,7 @@
 
 
         <div class="row">
-            {% for book in books %}
+            {% for book in book_list %}
             <a href="{% url 'Books:books_detail' book.slug %} ">
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="service h-100">
